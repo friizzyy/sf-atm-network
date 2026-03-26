@@ -74,9 +74,8 @@ export default function ContactPage() {
       <Nav />
 
       <section
+        className="pt-28 md:pt-36 pb-12 md:pb-20"
         style={{
-          paddingTop: '140px',
-          paddingBottom: '80px',
           borderBottom: '1px solid var(--border)',
         }}
       >
@@ -95,7 +94,7 @@ export default function ContactPage() {
             transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             style={{
               fontFamily: 'var(--font-dm-sans), system-ui, sans-serif',
-              fontSize: 'clamp(2.75rem, 6vw, 5rem)',
+              fontSize: 'clamp(2rem, 6vw, 5rem)',
               fontWeight: 800,
               lineHeight: 1.0,
               letterSpacing: '-0.04em',
@@ -126,12 +125,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section style={{ padding: '8rem 0' }}>
+      <section className="py-16 md:py-32">
         <div style={container}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '6rem',
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24" style={{
             alignItems: 'start',
           }}>
             {/* Form */}
@@ -200,7 +196,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label style={labelStyle}>Full Name</label>
                       <input
@@ -243,7 +239,7 @@ export default function ContactPage() {
                   </div>
 
                   {(inquiryType === 'event') && (
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label style={labelStyle}>Event Date</label>
                         <input

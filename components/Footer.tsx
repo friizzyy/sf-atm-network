@@ -20,15 +20,11 @@ export default function Footer() {
       }}
     >
       <div
+        className="flex flex-col md:flex-row items-center md:justify-between gap-4 md:gap-4"
         style={{
           maxWidth: '68rem',
           margin: '0 auto',
           padding: '0 1.5rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '16px',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -46,7 +42,7 @@ export default function Footer() {
           </span>
         </div>
 
-        <div style={{ display: 'flex', gap: '24px' }}>
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6">
           {['Services', 'Partners', 'Events', 'Contact'].map((link) => (
             <Link
               key={link}
@@ -69,6 +65,7 @@ export default function Footer() {
         </div>
 
         <span
+          className="text-center"
           style={{
             fontFamily: 'var(--font-fira), monospace',
             fontSize: '10px',

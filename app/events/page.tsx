@@ -21,7 +21,7 @@ function AnimatedHeadline({ text, accent }: { text: string; accent?: string }) {
     <h1
       style={{
         fontFamily: 'var(--font-dm-sans), system-ui, sans-serif',
-        fontSize: 'clamp(4rem, 9vw, 8rem)',
+        fontSize: 'clamp(2.25rem, 9vw, 8rem)',
         fontWeight: 800,
         lineHeight: 0.95,
         letterSpacing: '-0.05em',
@@ -175,8 +175,8 @@ export default function EventsPage() {
 
       {/* Animated Hero — character-by-character with live counter */}
       <section
+        className="pt-28 md:pt-36"
         style={{
-          paddingTop: '140px',
           paddingBottom: '0',
           position: 'relative',
           overflow: 'hidden',
@@ -216,7 +216,7 @@ export default function EventsPage() {
           <AnimatedHeadline text="Every event is a cash moment." accent="cash" />
 
           {/* Sub-content pushed to right half — Pattern B split */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', marginTop: '1rem' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12" style={{ marginTop: '1rem' }}>
             {/* Left: live counter stat */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -300,7 +300,7 @@ export default function EventsPage() {
       <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)' }} />
 
       {/* Event types — horizontal tab navigator */}
-      <section style={{ padding: '8rem 0' }}>
+      <section className="section-pad">
         <div style={container}>
           <SectionEyebrow label="Event Types" />
           <motion.h2
@@ -329,6 +329,9 @@ export default function EventsPage() {
               gap: 0,
               borderBottom: '1px solid var(--border)',
               marginBottom: '3rem',
+              overflowX: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'none',
             }}
           >
             {eventTabs.map((tab) => (
@@ -363,10 +366,8 @@ export default function EventsPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.35, ease: EASE }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16"
               style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '4rem',
                 alignItems: 'center',
               }}
             >
@@ -507,12 +508,7 @@ export default function EventsPage() {
       </section>
 
       {/* Complete infrastructure — horizontal scroll cards */}
-      <section
-        style={{
-          padding: '8rem 0',
-          position: 'relative',
-        }}
-      >
+      <section className="section-pad" style={{ position: 'relative' }}>
         {/* Thin gradient divider top */}
         <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)', marginBottom: '8rem', marginTop: '-8rem' }} />
         <div style={{ maxWidth: '68rem', margin: '0 auto' }}>
@@ -598,7 +594,7 @@ export default function EventsPage() {
       </section>
 
       {/* How to book */}
-      <section style={{ padding: '8rem 0' }}>
+      <section className="section-pad">
         <div style={container}>
           <SectionEyebrow label="How to Book" />
           <motion.h2

@@ -16,12 +16,6 @@ const HeroCanvas = dynamic(() => import('@/components/HeroCanvas'), { ssr: false
 
 const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number]
 
-const container = {
-  maxWidth: '68rem',
-  margin: '0 auto',
-  padding: '0 1.5rem',
-}
-
 function StatusDot({ status }: { status: string }) {
   const color = status === 'online' ? '#28c840' : status === 'maintenance' ? '#febc2e' : '#ff5f57'
   return (
@@ -64,22 +58,18 @@ export default function Home() {
 
         {/* Hero content — true left aligned, z-index above canvas */}
         <div
+          className="w-full"
           style={{
-            ...container,
+            maxWidth: '68rem',
+            margin: '0 auto',
+            padding: '0 1.5rem',
             position: 'relative',
             zIndex: 10,
             paddingTop: '4rem',
             paddingBottom: '6rem',
           }}
         >
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '4rem',
-              alignItems: 'center',
-            }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
             {/* Left: text anchored to left edge of container with frosted backdrop */}
             <div
               style={{
@@ -88,7 +78,7 @@ export default function Home() {
                 zIndex: 10,
                 background: 'linear-gradient(135deg, rgba(10,18,32,0.92) 0%, rgba(10,18,32,0.75) 60%, transparent 100%)',
                 borderRadius: '0 0 40px 0',
-                padding: '20px 32px 20px 0',
+                padding: '20px 16px 20px 0',
               }}
             >
               <motion.div
@@ -105,7 +95,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
                 style={{
                   fontFamily: 'var(--font-dm-sans), system-ui, sans-serif',
-                  fontSize: 'clamp(3.25rem, 7vw, 5.5rem)',
+                  fontSize: 'clamp(2.25rem, 7vw, 5.5rem)',
                   fontWeight: 800,
                   lineHeight: 1.0,
                   letterSpacing: '-0.04em',
@@ -151,19 +141,19 @@ export default function Home() {
             </div>
 
             {/* Right: intentionally empty — canvas fills this side */}
-            <div />
+            <div className="hidden md:block" />
           </div>
         </div>
 
         {/* Scroll indicator */}
         <motion.div
+          className="hidden md:flex"
           style={{
             position: 'absolute',
             bottom: '2rem',
             left: '50%',
             transform: 'translateX(-50%)',
             zIndex: 10,
-            display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             gap: '0.5rem',
@@ -178,10 +168,10 @@ export default function Home() {
       {/* ─── STATS STRIP — Pattern A: centered editorial ───────────────────── */}
       <section
         id="stats"
+        className="py-12 md:py-20"
         style={{
           borderTop: '1px solid var(--border)',
           borderBottom: '1px solid var(--border)',
-          padding: '5rem 0',
         }}
       >
         {/* Thin gradient divider top */}
@@ -189,13 +179,7 @@ export default function Home() {
           <SectionEyebrow label="Network Scale" />
         </div>
         <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 1.5rem' }}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              justifyItems: 'center',
-            }}
-          >
+          <div className="grid grid-cols-2 md:grid-cols-4 justify-items-center gap-y-8">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.mono}
@@ -203,13 +187,21 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: EASE }}
+                className="border-b md:border-b-0 pb-6 md:pb-0"
                 style={{
                   textAlign: 'center',
-                  borderRight: i < stats.length - 1 ? '1px solid rgba(232,234,240,0.08)' : 'none',
-                  padding: '0 2rem',
+                  borderRight: undefined,
+                  padding: '0 1rem',
                   width: '100%',
                 }}
               >
+                <div className="hidden md:block" style={{
+                  borderRight: i < stats.length - 1 ? '1px solid rgba(232,234,240,0.08)' : 'none',
+                  position: 'absolute',
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                }} />
                 <StatCounter
                   value={stat.value}
                   suffix={stat.suffix}
@@ -225,15 +217,13 @@ export default function Home() {
       </section>
 
       {/* ─── SERVICES PREVIEW — Pattern B: right-anchored ─────────────────── */}
-      <section style={{ padding: '9rem 0' }}>
+      <section className="py-16 md:py-36">
         {/* Thin gradient divider top */}
-        <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent)', marginBottom: '9rem', marginTop: '-9rem' }} />
+        <div className="mb-16 md:mb-36 -mt-16 md:-mt-36" style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent)' }} />
 
         <div
+          className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-16"
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 2fr',
-            gap: '4rem',
             maxWidth: '68rem',
             margin: '0 auto',
             padding: '0 1.5rem',
@@ -342,9 +332,9 @@ export default function Home() {
       </section>
 
       {/* ─── NETWORK PREVIEW — Pattern C: full-bleed editorial ─────────────── */}
-      <section style={{ padding: '9rem 0', overflow: 'hidden', position: 'relative' }}>
+      <section className="py-16 md:py-36" style={{ overflow: 'hidden', position: 'relative' }}>
         {/* Thin gradient divider top */}
-        <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)', marginBottom: '9rem', marginTop: '-9rem' }} />
+        <div className="mb-16 md:mb-36 -mt-16 md:-mt-36" style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)' }} />
 
         {/* Large bleed number — Pattern C treatment */}
         <div style={{ overflow: 'hidden', marginBottom: '2rem' }}>
@@ -355,7 +345,7 @@ export default function Home() {
             transition={{ duration: 1, ease: EASE }}
             style={{
               fontFamily: 'var(--font-dm-sans), system-ui, sans-serif',
-              fontSize: 'clamp(5rem, 14vw, 11rem)',
+              fontSize: 'clamp(3rem, 14vw, 11rem)',
               fontWeight: 800,
               letterSpacing: '-0.06em',
               lineHeight: 0.85,
@@ -370,10 +360,8 @@ export default function Home() {
 
         {/* Offset: header left + glass panel right */}
         <div
+          className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-16"
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 2fr',
-            gap: '4rem',
             maxWidth: '68rem',
             margin: '0 auto',
             padding: '0 1.5rem',
@@ -464,23 +452,23 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.4, ease: EASE }}
+                className="flex items-center justify-between px-4 md:px-6"
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '1.25rem 1.5rem',
+                  padding: undefined,
+                  paddingTop: '1.25rem',
+                  paddingBottom: '1.25rem',
                   borderBottom: i < 2 ? '1px solid rgba(232,234,240,0.04)' : 'none',
-                  gap: '1rem',
+                  gap: '0.75rem',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
                   <StatusDot status={loc.status} />
-                  <span style={{ fontSize: '0.875rem', color: 'var(--text-primary)', fontWeight: 450 }}>
+                  <span className="text-sm truncate" style={{ color: 'var(--text-primary)', fontWeight: 450 }}>
                     {loc.name}
                   </span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-                  <span style={{
+                <div className="flex items-center gap-3 md:gap-8 shrink-0">
+                  <span className="hidden sm:inline" style={{
                     fontFamily: 'var(--font-fira), monospace',
                     fontSize: '0.6rem',
                     letterSpacing: '0.08em',
@@ -505,22 +493,16 @@ export default function Home() {
       </section>
 
       {/* ─── ABOUT — Pattern D: offset grid, vertical label left ───────────── */}
-      <section id="about" style={{ padding: '9rem 0' }}>
+      <section id="about" className="py-16 md:py-36">
         {/* Thin gradient divider top */}
-        <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)', marginBottom: '9rem', marginTop: '-9rem' }} />
+        <div className="mb-16 md:mb-36 -mt-16 md:-mt-36" style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)' }} />
 
         <div style={{ maxWidth: '68rem', margin: '0 auto', padding: '0 1.5rem' }}>
           {/* Offset grid: vertical label | content */}
           <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '80px 1fr',
-              alignItems: 'start',
-              gap: '3rem',
-              marginBottom: '4rem',
-            }}
+            className="grid grid-cols-1 md:grid-cols-[80px_1fr] gap-4 md:gap-12 mb-8 md:mb-16"
           >
-            <div style={{ paddingTop: '8px', display: 'flex', justifyContent: 'center' }}>
+            <div className="hidden md:flex" style={{ paddingTop: '8px', justifyContent: 'center' }}>
               <span style={{
                 fontFamily: 'var(--font-fira), monospace',
                 fontSize: '9px',
@@ -534,14 +516,7 @@ export default function Home() {
               </span>
             </div>
             <div>
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: '6rem',
-                  alignItems: 'start',
-                }}
-              >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24" style={{ alignItems: 'start' }}>
                 {/* Pull quote */}
                 <motion.blockquote
                   initial={{ opacity: 0, x: -20 }}
@@ -591,8 +566,8 @@ export default function Home() {
 
       {/* ─── CTA SECTION — Pattern A: centered, no background band ─────────── */}
       <section
+        className="py-20 md:py-40"
         style={{
-          padding: '10rem 0',
           position: 'relative',
           textAlign: 'center',
         }}
@@ -620,7 +595,7 @@ export default function Home() {
             transition={{ duration: 0.8, ease: EASE }}
             style={{
               fontFamily: 'var(--font-dm-sans), system-ui, sans-serif',
-              fontSize: 'clamp(2.25rem, 5vw, 4rem)',
+              fontSize: 'clamp(1.75rem, 5vw, 4rem)',
               fontWeight: 800,
               lineHeight: 1.0,
               letterSpacing: '-0.04em',

@@ -26,7 +26,7 @@ export default function ServicesPage() {
       <Nav />
 
       {/* ─── HERO — Pattern C: oversized title bleeds, sub pushed right ─── */}
-      <section style={{ paddingTop: '120px', paddingBottom: '0', overflow: 'hidden' }}>
+      <section className="pt-24 md:pt-32" style={{ paddingBottom: '0', overflow: 'hidden' }}>
         {/* Oversized bleed headline */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -37,7 +37,7 @@ export default function ServicesPage() {
           <h1
             style={{
               fontFamily: 'var(--font-dm-sans), system-ui, sans-serif',
-              fontSize: 'clamp(3.5rem, 8vw, 7rem)',
+              fontSize: 'clamp(2.25rem, 8vw, 7rem)',
               fontWeight: 800,
               letterSpacing: '-0.05em',
               lineHeight: 0.95,
@@ -56,15 +56,14 @@ export default function ServicesPage() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
+          className="grid grid-cols-1 md:grid-cols-2"
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
             padding: '2.5rem 1.5rem 0',
             maxWidth: '68rem',
             margin: '0 auto',
           }}
         >
-          <div /> {/* empty left */}
+          <div className="hidden md:block" /> {/* empty left */}
           <p
             style={{
               color: 'var(--text-muted)',
@@ -89,29 +88,27 @@ export default function ServicesPage() {
       </section>
 
       {/* ─── SERVICES TAB NAVIGATOR ─────────────────────────────────────── */}
-      <section style={{ padding: '8rem 0', position: 'relative' }}>
+      <section className="section-pad" style={{ position: 'relative' }}>
         <div style={container}>
           <ServicesNav />
         </div>
       </section>
 
       {/* ─── LIVE NETWORK MONITOR — Pattern D: offset grid ──────────────── */}
-      <section style={{ padding: '8rem 0', position: 'relative' }}>
+      <section className="section-pad" style={{ position: 'relative' }}>
         {/* Thin gradient divider top */}
-        <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)', marginBottom: '8rem', marginTop: '-8rem' }} />
+        <div className="mb-16 md:mb-32 -mt-16 md:-mt-32" style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)' }} />
 
         <div style={{ maxWidth: '68rem', margin: '0 auto', padding: '0 1.5rem' }}>
           {/* Offset grid: vertical label | content */}
           <div
+            className="grid grid-cols-1 md:grid-cols-[80px_1fr] gap-4 md:gap-12"
             style={{
-              display: 'grid',
-              gridTemplateColumns: '80px 1fr',
               alignItems: 'start',
-              gap: '3rem',
               marginBottom: '3rem',
             }}
           >
-            <div style={{ paddingTop: '8px', display: 'flex', justifyContent: 'center' }}>
+            <div className="offset-grid-label" style={{ paddingTop: '8px', display: 'flex', justifyContent: 'center' }}>
               <span style={{
                 fontFamily: 'var(--font-fira), monospace',
                 fontSize: '9px',
@@ -171,7 +168,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ─── CTA — Pattern A: centered ───────────────────────────────────── */}
-      <section style={{ padding: '8rem 0', textAlign: 'center', position: 'relative' }}>
+      <section className="section-pad" style={{ textAlign: 'center', position: 'relative' }}>
         {/* Thin gradient divider top */}
         <div style={{
           position: 'absolute',

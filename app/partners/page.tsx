@@ -140,7 +140,7 @@ export default function PartnersPage() {
       <Nav />
 
       {/* ─── HERO — Pattern A: centered editorial ─────────────────────────── */}
-      <section style={{ paddingTop: '140px', paddingBottom: '80px', textAlign: 'center' }}>
+      <section className="pt-28 md:pt-36 pb-12 md:pb-20" style={{ textAlign: 'center' }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 1.5rem' }}>
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -156,7 +156,7 @@ export default function PartnersPage() {
             transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             style={{
               fontFamily: 'var(--font-dm-sans), system-ui, sans-serif',
-              fontSize: 'clamp(3rem, 6vw, 5.5rem)',
+              fontSize: 'clamp(2rem, 6vw, 5.5rem)',
               fontWeight: 800,
               letterSpacing: '-0.04em',
               lineHeight: 1.0,
@@ -200,18 +200,16 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── WHO QUALIFIES — Pattern D: offset grid + GlowCards ──────────── */}
-      <section style={{ padding: '8rem 0' }}>
+      <section className="py-16 md:py-32">
         <div style={container}>
           <div
+            className="grid grid-cols-1 md:grid-cols-[80px_1fr] gap-6 md:gap-12"
             style={{
-              display: 'grid',
-              gridTemplateColumns: '80px 1fr',
               alignItems: 'start',
-              gap: '3rem',
               marginBottom: '3.5rem',
             }}
           >
-            <div style={{ paddingTop: '8px', display: 'flex', justifyContent: 'center' }}>
+            <div className="hidden md:flex" style={{ paddingTop: '8px', justifyContent: 'center' }}>
               <span style={{
                 fontFamily: 'var(--font-fira), monospace',
                 fontSize: '9px',
@@ -284,18 +282,16 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── HOW IT WORKS — Pattern D: offset grid ───────────────────────── */}
-      <section style={{ padding: '8rem 0' }}>
+      <section className="py-16 md:py-32">
         <div style={container}>
           <div
+            className="grid grid-cols-1 md:grid-cols-[80px_1fr] gap-6 md:gap-12"
             style={{
-              display: 'grid',
-              gridTemplateColumns: '80px 1fr',
               alignItems: 'start',
-              gap: '3rem',
               marginBottom: '3.5rem',
             }}
           >
-            <div style={{ paddingTop: '8px', display: 'flex', justifyContent: 'center' }}>
+            <div className="hidden md:flex" style={{ paddingTop: '8px', justifyContent: 'center' }}>
               <span style={{
                 fontFamily: 'var(--font-fira), monospace',
                 fontSize: '9px',
@@ -331,7 +327,7 @@ export default function PartnersPage() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '44rem', marginLeft: 'calc(80px + 3rem)' }}>
+          <div className="md:ml-[calc(80px+3rem)]" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '44rem' }}>
             {[
               { step: '01', title: 'Apply in 5 minutes', body: 'Tell us about your location: business type, neighborhood, daily foot traffic estimate. We review and respond within 48 hours.' },
               { step: '02', title: 'We handle installation', body: 'Our team schedules a site visit, handles all permits, and installs the unit. Total disruption to your business: under two hours.' },
@@ -373,12 +369,10 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── TESTIMONIALS — Pattern B: right-anchored ────────────────────── */}
-      <section style={{ padding: '8rem 0' }}>
+      <section className="py-16 md:py-32">
         <div
+          className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-16"
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 2fr',
-            gap: '4rem',
             maxWidth: '68rem',
             margin: '0 auto',
             padding: '0 1.5rem',
@@ -453,7 +447,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── REVENUE TIERS — Pattern A: centered, moved to bottom ────────── */}
-      <section style={{ padding: '8rem 0' }}>
+      <section className="py-16 md:py-32">
         <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center', marginBottom: '4rem' }}>
           <SectionEyebrow label="Revenue Structure" />
           <motion.h2
@@ -549,7 +543,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── CTA — Pattern A: centered ───────────────────────────────────── */}
-      <section style={{ padding: '8rem 0', textAlign: 'center', position: 'relative' }}>
+      <section className="py-16 md:py-32" style={{ textAlign: 'center', position: 'relative' }}>
         <div style={{
           position: 'absolute',
           top: 0,

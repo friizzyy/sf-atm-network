@@ -190,3 +190,27 @@ body::before {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
+
+/* ─── Mobile responsive overrides ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .glass-chrome-bar span {
+    display: none;
+  }
+  .glass-chrome-bar {
+    padding: 0.5rem 0.75rem;
+  }
+  .glass-chrome {
+    overflow-x: auto;
+  }
+}
+
+/* ─── Responsive section padding ──────────────────────────────────────────── */
+.section-pad { padding-top: 5rem; padding-bottom: 5rem; }
+@media (min-width: 768px) { .section-pad { padding-top: 8rem; padding-bottom: 8rem; } }
+@media (min-width: 1024px) { .section-pad { padding-top: 9rem; padding-bottom: 9rem; } }
+
+/* Offset grid vertical label — hide on mobile */
+@media (max-width: 767px) {
+  .offset-grid-label { display: none; }
+  .offset-grid-content { margin-left: 0 !important; }
+}

@@ -62,13 +62,15 @@ export default function NetworkMonitor() {
         </div>
       </div>
 
+      <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
       {/* Table header */}
       <div
-        className="grid px-6 py-3"
+        className="grid px-4 md:px-6 py-3"
         style={{
           gridTemplateColumns: '1fr 5rem 8rem 6rem 4rem',
           gap: '1rem',
           borderBottom: '1px solid rgba(232,234,240,0.05)',
+          minWidth: '540px',
         }}
       >
         {['LOCATION', 'STATUS', 'LAST TX', 'TX COUNT', 'CASH'].map((h) => (
@@ -92,12 +94,13 @@ export default function NetworkMonitor() {
         {networkLocations.map((loc, i) => (
           <motion.div
             key={loc.id}
-            className="grid px-6 py-4 group"
+            className="grid px-4 md:px-6 py-4 group"
             style={{
               gridTemplateColumns: '1fr 5rem 8rem 6rem 4rem',
               gap: '1rem',
               borderBottom: '1px solid rgba(232,234,240,0.04)',
               transition: 'background 0.2s',
+              minWidth: '540px',
             }}
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -198,6 +201,7 @@ export default function NetworkMonitor() {
             </div>
           </motion.div>
         ))}
+      </div>
       </div>
     </div>
   )
