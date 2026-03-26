@@ -1,0 +1,15 @@
+{
+  "Copy Editor": {
+    "status": "done",
+    "output": "Done. One copy violation found and fixed:\n\n- **`app/services/page.tsx:77`** \u2014 Em dash in rendered paragraph text. Changed \"support \u2014 end to end\" to \"support. End to end\"\n\nNo instances of \"Get Started\", \"Seamlessly\", \"Transform your...\", or \"Powerful, Intuitive, Reliable\" were found anywhere in rendered text. The codebase is otherwise clean. Report saved to `COPY_REPORT.md`.\n",
+    "exit_code": 0
+  },
+  "Design QA": {
+    "status": "done",
+    "output": "QA report saved to `/Users/clawd/Projects/sf-atm-network/QA_REPORT.md`.\n\n**Score: 65/100**\n\n5 FAILs, 5 warnings. The most critical issue is `MagneticButton` using plain `<a href>` instead of Next.js `<Link>` for all CTA buttons site-wide -- this causes full page reloads on every CTA click. The other major issues are an em dash in the services page copy and multiple instances of static numbers that should use CountUp animation.\n",
+    "exit_code": 0
+  },
+  "timestamp": "2026-03-25T20:36:42.431713",
+  "slug": "sf-atm-network",
+  "mode": "standard"
+}
