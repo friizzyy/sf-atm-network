@@ -193,7 +193,7 @@ body::before {
 
 /* ─── Mobile responsive overrides ──────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .glass-chrome-bar span {
+  .glass-chrome-bar > span {
     display: none;
   }
   .glass-chrome-bar {
@@ -208,11 +208,6 @@ body::before {
     font-size: 0.9375rem;
     line-height: 1.55;
     -webkit-text-size-adjust: 100%;
-  }
-
-  /* Ensure tap targets are at least 44px */
-  button, a, input, select, textarea {
-    min-height: 44px;
   }
 
   /* Hide scrollbars on horizontal scroll containers */

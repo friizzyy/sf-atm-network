@@ -65,11 +65,11 @@ export default function Home() {
             padding: '0 1.5rem',
             position: 'relative',
             zIndex: 10,
-            paddingTop: '2rem',
-            paddingBottom: '3rem',
+            paddingTop: '4rem',
+            paddingBottom: '6rem',
           }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center" style={{ paddingTop: 'env(safe-area-inset-top, 0)' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
             {/* Left: text anchored to left edge of container with frosted backdrop */}
             <div
               className="hero-text-container"
@@ -77,6 +77,7 @@ export default function Home() {
                 paddingLeft: 0,
                 position: 'relative',
                 zIndex: 10,
+                background: 'linear-gradient(135deg, rgba(10,18,32,0.92) 0%, rgba(10,18,32,0.75) 60%, transparent 100%)',
                 borderRadius: '0 0 40px 0',
                 padding: '20px 16px 20px 0',
               }}
