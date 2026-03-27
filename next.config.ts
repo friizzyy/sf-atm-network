@@ -1,10 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  basePath: "/projects/sf-atm-network",
-  trailingSlash: true,
-  images: { unoptimized: true },
+  // Removed static export and basePath for v0 development compatibility
+  // These can be re-enabled for specific deployment targets if needed
 };
 
 export default nextConfig;
