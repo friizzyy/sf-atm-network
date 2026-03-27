@@ -65,18 +65,18 @@ export default function Home() {
             padding: '0 1.5rem',
             position: 'relative',
             zIndex: 10,
-            paddingTop: '4rem',
-            paddingBottom: '6rem',
+            paddingTop: '2rem',
+            paddingBottom: '3rem',
           }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center" style={{ paddingTop: 'env(safe-area-inset-top, 0)' }}>
             {/* Left: text anchored to left edge of container with frosted backdrop */}
             <div
+              className="hero-text-container"
               style={{
                 paddingLeft: 0,
                 position: 'relative',
                 zIndex: 10,
-                background: 'linear-gradient(135deg, rgba(10,18,32,0.92) 0%, rgba(10,18,32,0.75) 60%, transparent 100%)',
                 borderRadius: '0 0 40px 0',
                 padding: '20px 16px 20px 0',
               }}
@@ -280,7 +280,7 @@ export default function Home() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(200px, 100%), 1fr))',
               gap: '1px',
               background: 'var(--border)',
               border: '1px solid var(--border)',
@@ -525,10 +525,10 @@ export default function Home() {
                   transition={{ duration: 0.8, ease: EASE }}
                   style={{
                     margin: 0,
-                    padding: '0 0 0 2rem',
+                    padding: '0 0 0 1.25rem',
                     borderLeft: '3px solid var(--accent)',
                     fontFamily: 'var(--font-dm-sans), system-ui, sans-serif',
-                    fontSize: 'clamp(1.375rem, 2.5vw, 1.875rem)',
+                    fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',
                     fontWeight: 700,
                     lineHeight: 1.25,
                     letterSpacing: '-0.02em',

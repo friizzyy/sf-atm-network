@@ -48,6 +48,7 @@ export default function HeroCanvas() {
     let tick = 0
     let W = 0
     let H = 0
+    const isMobile = window.innerWidth < 768
 
     const particles: Particle[] = []
     let nodes: Node[] = []
@@ -160,8 +161,10 @@ export default function HeroCanvas() {
 
       tick++
 
-      // Spawn particle every 8 ticks
-      if (tick % 8 === 0 && particles.length < 40) {
+      // Spawn particles — fewer on mobile for performance
+      const spawnRate = isMobile ? 16 : 8
+      const maxParticles = isMobile ? 15 : 40
+      if (tick % spawnRate === 0 && particles.length < maxParticles) {
         spawnParticle()
       }
 
@@ -308,12 +311,24 @@ export default function HeroCanvas() {
           zIndex: 0,
         }}
       />
-      {/* Gradient overlay — ensures left side text is always readable */}
+      {/* Gradient overlay — desktop: left-to-right, mobile: stronger coverage for readability */}
       <div
+        className="hidden md:block"
         style={{
           position: 'absolute',
           inset: 0,
           background: 'linear-gradient(to right, rgba(10,18,32,0.88) 0%, rgba(10,18,32,0.65) 55%, rgba(10,18,32,0.2) 80%, transparent 100%)',
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}
+      />
+      {/* Mobile overlay — heavier coverage so text is crisp, canvas still peeks through */}
+      <div
+        className="block md:hidden"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to bottom, rgba(10,18,32,0.85) 0%, rgba(10,18,32,0.7) 50%, rgba(10,18,32,0.5) 100%)',
           pointerEvents: 'none',
           zIndex: 1,
         }}

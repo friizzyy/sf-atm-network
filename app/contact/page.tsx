@@ -52,11 +52,12 @@ export default function ContactPage() {
     borderRadius: '4px',
     padding: '0.875rem 1rem',
     color: 'var(--text-primary)',
-    fontSize: '0.9375rem',
+    fontSize: '16px', // Prevents iOS zoom on focus
     fontFamily: 'var(--font-inter), system-ui, sans-serif',
     outline: 'none',
     transition: 'border-color 0.2s',
     boxSizing: 'border-box',
+    minHeight: '48px',
   }
 
   const labelStyle: React.CSSProperties = {
@@ -171,14 +172,14 @@ export default function ContactPage() {
                   {/* Inquiry type selector */}
                   <div>
                     <label style={labelStyle}>Inquiry Type</label>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(150px, 100%), 1fr))', gap: '0.5rem' }}>
                       {inquiryOptions.map((opt) => (
                         <button
                           key={opt.value}
                           type="button"
                           onClick={() => setInquiryType(opt.value)}
                           style={{
-                            padding: '0.75rem 1rem',
+                            padding: '0.875rem 1rem',
                             background: inquiryType === opt.value ? 'rgba(196,30,58,0.1)' : 'rgba(255,255,255,0.02)',
                             border: `1px solid ${inquiryType === opt.value ? 'rgba(196,30,58,0.4)' : 'var(--border)'}`,
                             borderRadius: '4px',
@@ -188,6 +189,7 @@ export default function ContactPage() {
                             textAlign: 'left',
                             transition: 'all 0.2s',
                             fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                            minHeight: '48px',
                           }}
                         >
                           {opt.label}
@@ -381,7 +383,7 @@ export default function ContactPage() {
                     { label: 'Event Bookings', time: 'Within 24 hours' },
                     { label: 'Technical Support', time: 'Within 4 hours' },
                   ].map((item) => (
-                    <div key={item.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div key={item.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                       <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>{item.label}</span>
                       <span style={{
                         fontFamily: 'var(--font-fira), monospace',

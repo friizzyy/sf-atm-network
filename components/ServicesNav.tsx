@@ -308,8 +308,52 @@ export default function ServicesNav() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8">
-      {/* Left: sidebar tabs */}
-      <div className="lg:col-span-4 flex flex-col gap-1">
+      {/* Mobile: horizontal scrolling tabs */}
+      <div className="lg:hidden" style={{ marginBottom: '1.5rem' }}>
+        <div
+          className="mobile-scroll-hide"
+          style={{
+            display: 'flex',
+            gap: 0,
+            overflowX: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            borderBottom: '1px solid var(--border)',
+            scrollbarWidth: 'none',
+          }}
+        >
+          {services.map((service) => {
+            const isActive = service.id === active
+            return (
+              <button
+                key={service.id}
+                onClick={() => setActive(service.id)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  borderBottom: `2px solid ${isActive ? service.color : 'transparent'}`,
+                  marginBottom: '-1px',
+                  padding: '0.875rem 1.25rem',
+                  fontFamily: 'var(--font-fira), monospace',
+                  fontSize: '0.6rem',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: isActive ? service.color : 'var(--text-faint)',
+                  cursor: 'pointer',
+                  transition: 'color 0.2s, border-color 0.2s',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                  minHeight: '44px',
+                }}
+              >
+                {service.title}
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Desktop: sidebar tabs */}
+      <div className="hidden lg:flex lg:col-span-4 flex-col gap-1">
         {services.map((service) => {
           const isActive = service.id === active
           return (

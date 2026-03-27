@@ -247,7 +247,7 @@ export default function PartnersPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))',
             gap: '1rem',
           }}>
             {qualifiers.map((q, i) => (
@@ -339,7 +339,7 @@ export default function PartnersPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.5, delay: i * 0.12, ease: EASE }}
-                style={{ display: 'flex', gap: '2rem', alignItems: 'start' }}
+                style={{ display: 'flex', gap: '1.25rem', alignItems: 'start' }}
               >
                 <div style={{
                   fontFamily: 'var(--font-fira), monospace',
@@ -411,7 +411,7 @@ export default function PartnersPage() {
                 transition={{ duration: 0.6, delay: i * 0.12, ease: EASE }}
                 style={{
                   margin: 0,
-                  padding: '2rem',
+                  padding: 'clamp(1.25rem, 3vw, 2rem)',
                   background: 'rgba(15,29,53,0.5)',
                   border: '1px solid var(--border)',
                   borderLeft: '3px solid var(--accent)',
@@ -474,7 +474,7 @@ export default function PartnersPage() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))',
               gap: '1.5rem',
             }}
           >

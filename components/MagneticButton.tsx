@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useState, useCallback, ReactNode } from 'react'
+import { useRef, useState, useCallback, useEffect, ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
@@ -21,15 +21,21 @@ export default function MagneticButton({
   const ref = useRef<HTMLDivElement>(null)
   const [isHovered, setIsHovered] = useState(false)
   const [glowPos, setGlowPos] = useState({ x: 50, y: 50 })
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
+
+  useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0)
+  }, [])
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (isTouchDevice) return
     const el = ref.current
     if (!el) return
     const rect = el.getBoundingClientRect()
     const x = ((e.clientX - rect.left) / rect.width) * 100
     const y = ((e.clientY - rect.top) / rect.height) * 100
     setGlowPos({ x, y })
-  }, [])
+  }, [isTouchDevice])
 
   const handleMouseLeave = useCallback(() => {
     setIsHovered(false)
@@ -64,25 +70,25 @@ export default function MagneticButton({
   const inner = (
     <motion.div
       ref={ref}
-      style={{ position: 'relative', overflow: 'hidden', ...baseStyle }}
-      animate={isHovered ? hoverStyle : baseStyle}
+      style={{ position: 'relative', overflow: 'hidden', minHeight: '48px', ...baseStyle }}
+      animate={isHovered && !isTouchDevice ? hoverStyle : baseStyle}
       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       whileTap={{ scale: 0.97 }}
       className={`
         inline-flex items-center justify-center cursor-pointer select-none
         font-[family-name:var(--font-mono)]
         text-[11px] tracking-[0.18em] uppercase
-        px-8 py-4 rounded-none
+        px-6 py-3.5 md:px-8 md:py-4 rounded-none
         transition-colors
         ${className}
       `}
       onClick={onClick}
     >
-      {/* Radial glow that follows cursor — stationary button, just the light moves */}
-      {isHovered && (
+      {/* Radial glow that follows cursor — only on pointer devices */}
+      {isHovered && !isTouchDevice && (
         <div
           style={{
             position: 'absolute',
