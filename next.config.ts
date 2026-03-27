@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Removed static export and basePath for v0 development compatibility
-  // These can be re-enabled for specific deployment targets if needed
+  // No basePath or output: export needed for development
+  // This ensures the app works at the root path in the dev server
+  reactStrictMode: true,
 };
 
 export default nextConfig;
