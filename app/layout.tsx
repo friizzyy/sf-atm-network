@@ -1,25 +1,17 @@
 import type { Metadata, Viewport } from 'next'
-import { DM_Sans, Inter, Fira_Code } from 'next/font/google'
 import './globals.css'
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  variable: '--font-dm-sans',
-  weight: ['400', '500', '700', '800'],
-  display: 'swap',
-})
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const firaCode = Fira_Code({
-  subsets: ['latin'],
-  variable: '--font-fira',
-  display: 'swap',
-})
+// Import fontsource fonts (bundled locally, no Google Fonts fetch needed)
+import '@fontsource/dm-sans/400.css'
+import '@fontsource/dm-sans/500.css'
+import '@fontsource/dm-sans/700.css'
+import '@fontsource/dm-sans/800.css'
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/700.css'
+import '@fontsource/fira-code/400.css'
+import '@fontsource/fira-code/500.css'
+import '@fontsource/fira-code/700.css'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -44,10 +36,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${inter.variable} ${firaCode.variable}`}>
+    <html lang="en">
       <body
         style={{
-          fontFamily: 'var(--font-inter), system-ui, sans-serif',
+          fontFamily: "'Inter', system-ui, sans-serif",
         }}
       >
         {/* Global ambient background — fixed layer, visible on every page */}
@@ -62,7 +54,6 @@ export default function RootLayout({
         >
           {/* Slow red orb — top left (scaled for mobile) */}
           <div
-            className="ambient-orb-red"
             style={{
               position: 'absolute',
               width: 'min(800px, 100vw)',
@@ -76,7 +67,6 @@ export default function RootLayout({
           />
           {/* Slow blue orb — bottom right (scaled for mobile) */}
           <div
-            className="ambient-orb-blue"
             style={{
               position: 'absolute',
               width: 'min(700px, 90vw)',
@@ -90,7 +80,6 @@ export default function RootLayout({
           />
           {/* Faint center accent (scaled for mobile) */}
           <div
-            className="ambient-orb-center"
             style={{
               position: 'absolute',
               width: 'min(400px, 60vw)',

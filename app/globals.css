@@ -20,6 +20,11 @@
   --font-display: 'DM Sans', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'Fira Code', 'Fira Mono', monospace;
+
+  /* Aliases used by components (previously set by next/font/google) */
+  --font-dm-sans: 'DM Sans', system-ui, sans-serif;
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-fira: 'Fira Code', 'Fira Mono', monospace;
 }
 
 @theme inline {
