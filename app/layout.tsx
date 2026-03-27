@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { DM_Sans, Inter, Fira_Code } from 'next/font/google'
 import './globals.css'
 
@@ -20,6 +20,12 @@ const firaCode = Fira_Code({
   variable: '--font-fira',
   display: 'swap',
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
 
 export const metadata: Metadata = {
   title: 'SF ATM Network: Premium ATM Placement in San Francisco',
@@ -54,12 +60,13 @@ export default function RootLayout({
             pointerEvents: 'none',
           }}
         >
-          {/* Slow red orb — top left */}
+          {/* Slow red orb — top left (scaled for mobile) */}
           <div
+            className="ambient-orb-red"
             style={{
               position: 'absolute',
-              width: '800px',
-              height: '800px',
+              width: 'min(800px, 100vw)',
+              height: 'min(800px, 100vw)',
               borderRadius: '50%',
               background: 'radial-gradient(circle, rgba(196,30,58,0.07) 0%, transparent 65%)',
               animation: 'drift1 22s ease-in-out infinite alternate',
@@ -67,12 +74,13 @@ export default function RootLayout({
               left: '-15%',
             }}
           />
-          {/* Slow blue orb — bottom right */}
+          {/* Slow blue orb — bottom right (scaled for mobile) */}
           <div
+            className="ambient-orb-blue"
             style={{
               position: 'absolute',
-              width: '700px',
-              height: '700px',
+              width: 'min(700px, 90vw)',
+              height: 'min(700px, 90vw)',
               borderRadius: '50%',
               background: 'radial-gradient(circle, rgba(30,79,216,0.06) 0%, transparent 65%)',
               animation: 'drift2 28s ease-in-out infinite alternate',
@@ -80,12 +88,13 @@ export default function RootLayout({
               right: '-10%',
             }}
           />
-          {/* Faint center accent */}
+          {/* Faint center accent (scaled for mobile) */}
           <div
+            className="ambient-orb-center"
             style={{
               position: 'absolute',
-              width: '400px',
-              height: '400px',
+              width: 'min(400px, 60vw)',
+              height: 'min(400px, 60vw)',
               borderRadius: '50%',
               background: 'radial-gradient(circle, rgba(196,30,58,0.04) 0%, transparent 70%)',
               animation: 'drift3 35s ease-in-out infinite alternate',

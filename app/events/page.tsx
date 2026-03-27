@@ -223,14 +223,15 @@ export default function EventsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6, ease: EASE }}
               style={{
-                display: 'inline-flex',
+                display: 'flex',
                 alignItems: 'baseline',
                 gap: '0.75rem',
-                padding: '1rem 1.5rem',
+                padding: '1rem 1.25rem',
                 background: 'rgba(196,30,58,0.06)',
                 border: '1px solid rgba(196,30,58,0.2)',
                 borderRadius: '4px',
                 alignSelf: 'start',
+                width: 'fit-content',
               }}
             >
               <span style={{
@@ -324,11 +325,12 @@ export default function EventsPage() {
 
           {/* Underline tab nav */}
           <div
+            className="mobile-scroll-hide"
             style={{
               display: 'flex',
               gap: 0,
               borderBottom: '1px solid var(--border)',
-              marginBottom: '3rem',
+              marginBottom: '2rem',
               overflowX: 'auto',
               WebkitOverflowScrolling: 'touch',
               scrollbarWidth: 'none',
@@ -343,7 +345,7 @@ export default function EventsPage() {
                   border: 'none',
                   borderBottom: `2px solid ${activeTab === tab.id ? 'var(--accent)' : 'transparent'}`,
                   marginBottom: '-1px',
-                  padding: '0.75rem 1.5rem',
+                  padding: '0.875rem 1.25rem',
                   fontFamily: 'var(--font-fira), monospace',
                   fontSize: '0.625rem',
                   letterSpacing: '0.15em',
@@ -351,6 +353,9 @@ export default function EventsPage() {
                   color: activeTab === tab.id ? 'var(--accent)' : 'var(--text-faint)',
                   cursor: 'pointer',
                   transition: 'color 0.2s, border-color 0.2s',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                  minHeight: '44px',
                 }}
               >
                 {tab.label}
@@ -433,7 +438,7 @@ export default function EventsPage() {
 
               {/* Right: visual element */}
               <div style={{
-                height: '300px',
+                height: 'clamp(200px, 40vw, 300px)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -536,6 +541,7 @@ export default function EventsPage() {
 
           {/* Horizontal scroll row */}
           <div
+            className="mobile-scroll-hide"
             style={{
               display: 'flex',
               gap: '1px',
@@ -543,6 +549,7 @@ export default function EventsPage() {
               scrollSnapType: 'x mandatory',
               WebkitOverflowScrolling: 'touch',
               paddingBottom: '1rem',
+              paddingLeft: '1.5rem',
               msOverflowStyle: 'none',
               scrollbarWidth: 'none',
             } as React.CSSProperties}
@@ -556,9 +563,9 @@ export default function EventsPage() {
                 transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
                 style={{
                   flexShrink: 0,
-                  width: '220px',
+                  width: 'clamp(200px, 55vw, 220px)',
                   scrollSnapAlign: 'start',
-                  padding: '2rem 1.5rem',
+                  padding: '1.5rem 1.25rem',
                   background: 'var(--bg)',
                   borderRight: '1px solid var(--border)',
                   position: 'relative',
@@ -628,7 +635,7 @@ export default function EventsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.5, delay: i * 0.12, ease: EASE }}
-                style={{ display: 'flex', gap: '2rem', alignItems: 'start' }}
+                style={{ display: 'flex', gap: '1.25rem', alignItems: 'start' }}
               >
                 <div style={{
                   fontFamily: 'var(--font-fira), monospace',

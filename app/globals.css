@@ -193,7 +193,7 @@ body::before {
 
 /* ─── Mobile responsive overrides ──────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .glass-chrome-bar span {
+  .glass-chrome-bar > span {
     display: none;
   }
   .glass-chrome-bar {
@@ -202,10 +202,30 @@ body::before {
   .glass-chrome {
     overflow-x: auto;
   }
+
+  /* Mobile typography tightening */
+  body {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Hide scrollbars on horizontal scroll containers */
+  .mobile-scroll-hide::-webkit-scrollbar { display: none; }
+  .mobile-scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* ─── Mobile network monitor card layout ───────────────────────────────────── */
+@media (max-width: 640px) {
+  .network-monitor-table { display: none !important; }
+  .network-monitor-cards { display: flex !important; }
+}
+@media (min-width: 641px) {
+  .network-monitor-cards { display: none !important; }
 }
 
 /* ─── Responsive section padding ──────────────────────────────────────────── */
-.section-pad { padding-top: 5rem; padding-bottom: 5rem; }
+.section-pad { padding-top: 4rem; padding-bottom: 4rem; }
 @media (min-width: 768px) { .section-pad { padding-top: 8rem; padding-bottom: 8rem; } }
 @media (min-width: 1024px) { .section-pad { padding-top: 9rem; padding-bottom: 9rem; } }
 
@@ -213,4 +233,9 @@ body::before {
 @media (max-width: 767px) {
   .offset-grid-label { display: none; }
   .offset-grid-content { margin-left: 0 !important; }
+}
+
+/* ─── Mobile smooth scroll fix (iOS) ──────────────────────────────────────── */
+@supports (-webkit-touch-callout: none) {
+  html { scroll-behavior: auto; }
 }

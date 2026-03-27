@@ -26,7 +26,7 @@ export default function ServicesPage() {
       <Nav />
 
       {/* ─── HERO — Pattern C: oversized title bleeds, sub pushed right ─── */}
-      <section className="pt-24 md:pt-32" style={{ paddingBottom: '0', overflow: 'hidden' }}>
+      <section className="pt-28 md:pt-32" style={{ paddingBottom: '0', overflow: 'hidden' }}>
         {/* Oversized bleed headline */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
