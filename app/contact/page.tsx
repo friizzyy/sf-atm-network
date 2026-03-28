@@ -14,12 +14,13 @@ const container = {
   padding: '0 1.5rem',
 }
 
-type InquiryType = 'partner' | 'event' | 'support' | 'other'
+type InquiryType = 'partner' | 'event' | 'support' | 'diagnostics' | 'other'
 
 const inquiryOptions: { value: InquiryType; label: string }[] = [
-  { value: 'partner', label: 'ATM Partner Program' },
-  { value: 'event', label: 'Event Deployment' },
-  { value: 'support', label: 'Existing Partner Support' },
+  { value: 'partner', label: 'ATM Placement' },
+  { value: 'event', label: 'Event Placement' },
+  { value: 'support', label: 'ATM Support + Service' },
+  { value: 'diagnostics', label: 'Remote Diagnostics Help' },
   { value: 'other', label: 'Other Inquiry' },
 ]
 
@@ -86,7 +87,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: EASE }}
           >
-            <SectionEyebrow label="Contact SF ATM Network" />
+            <SectionEyebrow label="Contact SF ATM" />
           </motion.div>
 
           <motion.h1
@@ -120,7 +121,7 @@ export default function ContactPage() {
               maxWidth: '32rem',
             }}
           >
-            Partner applications, event bookings, and support requests all come through here.
+            Partner applications, event bookings, support requests, and diagnostics inquiries all come through here.
             We respond within one business day.
           </motion.p>
         </div>
@@ -283,6 +284,10 @@ export default function ContactPage() {
                           ? 'Tell us about your location: type of business, neighborhood, approximate daily foot traffic...'
                           : inquiryType === 'event'
                           ? 'Tell us about your event: format, expected attendance, how many ATMs you need...'
+                          : inquiryType === 'support'
+                          ? 'Describe the issue with your ATM: machine ID, error codes, symptoms...'
+                          : inquiryType === 'diagnostics'
+                          ? 'Tell us about your ATM model, the issue you are experiencing, and any error codes displayed...'
                           : 'Describe your question or issue...'
                       }
                     />
@@ -315,7 +320,7 @@ export default function ContactPage() {
               <div>
                 <div style={labelStyle}>Email</div>
                 <a
-                  href="mailto:hello@sfatmnetwork.com"
+                  href="mailto:hello@sfatm.com"
                   style={{
                     color: 'var(--text-primary)',
                     fontSize: '0.9375rem',
@@ -325,14 +330,14 @@ export default function ContactPage() {
                   onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
                 >
-                  hello@sfatmnetwork.com
+                  hello@sfatm.com
                 </a>
               </div>
 
               <div>
                 <div style={labelStyle}>Partner Inquiries</div>
                 <a
-                  href="mailto:partners@sfatmnetwork.com"
+                  href="mailto:partners@sfatm.com"
                   style={{
                     color: 'var(--text-primary)',
                     fontSize: '0.9375rem',
@@ -342,7 +347,7 @@ export default function ContactPage() {
                   onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
                 >
-                  partners@sfatmnetwork.com
+                  partners@sfatm.com
                 </a>
               </div>
 
@@ -382,6 +387,7 @@ export default function ContactPage() {
                     { label: 'Partner Applications', time: 'Within 48 hours' },
                     { label: 'Event Bookings', time: 'Within 24 hours' },
                     { label: 'Technical Support', time: 'Within 4 hours' },
+                    { label: 'Remote Diagnostics', time: 'Same day' },
                   ].map((item) => (
                     <div key={item.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                       <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>{item.label}</span>

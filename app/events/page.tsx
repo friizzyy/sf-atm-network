@@ -133,7 +133,7 @@ const eventTabs = [
       'Nightly transaction summaries',
     ],
     visual: { icon: '◉', color: '#c41e3a', pattern: 'dots' },
-    description: 'Cash-heavy nights in SoMa, Tenderloin, and Mission clubs. We position units near the door and bar entry for maximum transaction volume.',
+    description: 'Cash-heavy nights at Bay Area clubs and late-night venues. We position units near the door and bar entry for maximum transaction volume.',
   },
   {
     id: 'popup',
@@ -210,7 +210,7 @@ export default function EventsPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: EASE }}
           >
-            <SectionEyebrow label="Event ATM Deployment" />
+            <SectionEyebrow label="Event ATM Placement" />
           </motion.div>
 
           <AnimatedHeadline text="Every event is a cash moment." accent="cash" />
@@ -275,7 +275,7 @@ export default function EventsPage() {
                   marginTop: 0,
                 }}
               >
-                SF ATM Network deploys portable ATMs to festivals, nightlife venues, markets, and
+                SF ATM brings portable ATMs to festivals, nightlife venues, markets, and
                 pop-ups across the Bay Area. We handle setup, cash, and teardown.
               </motion.p>
 
@@ -535,7 +535,7 @@ export default function EventsPage() {
                 marginBottom: 0,
               }}
             >
-              Complete infrastructure, zero overhead.
+              Full setup, zero overhead.
             </motion.h2>
           </div>
 
@@ -620,7 +620,7 @@ export default function EventsPage() {
               marginBottom: '4rem',
             }}
           >
-            Three steps to your first deployment.
+            Three steps to your event ATM.
           </motion.h2>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '44rem' }}>

@@ -9,32 +9,12 @@ import SectionEyebrow from '@/components/SectionEyebrow'
 import StatCounter from '@/components/StatCounter'
 import Footer from '@/components/Footer'
 
-import { hero, stats, services, networkLocations, about, cta } from '@/lib/data'
+import { hero, stats, services, industries, about, cta } from '@/lib/data'
 
 // Canvas is client-only, no SSR
 const HeroCanvas = dynamic(() => import('@/components/HeroCanvas'), { ssr: false })
 
 const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number]
-
-function StatusDot({ status }: { status: string }) {
-  const color = status === 'online' ? '#28c840' : status === 'maintenance' ? '#febc2e' : '#ff5f57'
-  return (
-    <motion.span
-      style={{
-        display: 'inline-block',
-        width: '7px',
-        height: '7px',
-        borderRadius: '50%',
-        background: color,
-        flexShrink: 0,
-      }}
-      animate={status === 'online' ? {
-        boxShadow: [`0 0 0 0 ${color}66`, `0 0 0 5px ${color}00`, `0 0 0 0 ${color}66`],
-      } : {}}
-      transition={{ duration: 2, repeat: Infinity }}
-    />
-  )
-}
 
 export default function Home() {
   return (
@@ -177,7 +157,7 @@ export default function Home() {
       >
         {/* Thin gradient divider top */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-          <SectionEyebrow label="Network Scale" />
+          <SectionEyebrow label="Live Status" />
         </div>
         <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 1.5rem' }}>
           <div className="grid grid-cols-2 md:grid-cols-4 justify-items-center gap-y-8">
@@ -249,7 +229,7 @@ export default function Home() {
                 marginBottom: '2rem',
               }}
             >
-              Full-stack ATM operations.
+              Full-service ATM<br />for your business.
             </motion.h2>
             <motion.div
               initial={{ opacity: 0 }}
@@ -332,34 +312,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── NETWORK PREVIEW — Pattern C: full-bleed editorial ─────────────── */}
+      {/* ─── INDUSTRIES — Pattern C: who we work with ─────────────────────── */}
       <section className="py-16 md:py-36" style={{ overflow: 'hidden', position: 'relative' }}>
         {/* Thin gradient divider top */}
         <div className="mb-16 md:mb-36 -mt-16 md:-mt-36" style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)' }} />
 
-        {/* Large bleed number — Pattern C treatment */}
-        <div style={{ overflow: 'hidden', marginBottom: '2rem' }}>
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 1, ease: EASE }}
-            style={{
-              fontFamily: 'var(--font-dm-sans), system-ui, sans-serif',
-              fontSize: 'clamp(3rem, 14vw, 11rem)',
-              fontWeight: 800,
-              letterSpacing: '-0.06em',
-              lineHeight: 0.85,
-              color: 'rgba(196,30,58,0.07)',
-              padding: '0 1.5rem',
-              userSelect: 'none',
-            }}
-          >
-            200+
-          </motion.div>
-        </div>
-
-        {/* Offset: header left + glass panel right */}
         <div
           className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-16"
           style={{
@@ -369,9 +326,9 @@ export default function Home() {
             alignItems: 'start',
           }}
         >
-          {/* Left col: eyebrow + headline + link */}
-          <div>
-            <SectionEyebrow label="Live Network" />
+          {/* Left col: sticky eyebrow + headline + link */}
+          <div style={{ position: 'sticky', top: '6rem' }}>
+            <SectionEyebrow label="Who We Work With" />
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -388,9 +345,24 @@ export default function Home() {
                 marginBottom: '1.5rem',
               }}
             >
-              The network,{' '}
-              <span style={{ color: 'var(--accent)' }}>right now.</span>
+              Built for Bay Area{' '}
+              <span style={{ color: 'var(--accent)' }}>businesses.</span>
             </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2, ease: EASE }}
+              style={{
+                color: 'var(--text-muted)',
+                fontSize: '0.9375rem',
+                lineHeight: 1.65,
+                marginBottom: '2rem',
+                maxWidth: '22rem',
+              }}
+            >
+              We place and support ATMs across every major Bay Area business category. If your location has foot traffic, we have a solution.
+            </motion.p>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -398,7 +370,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.3, ease: EASE }}
             >
               <Link
-                href="/services"
+                href="/contact"
                 style={{
                   fontFamily: 'var(--font-fira), monospace',
                   fontSize: '0.625rem',
@@ -412,84 +384,59 @@ export default function Home() {
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
               >
-                View live network →
+                Become a partner &rarr;
               </Link>
             </motion.div>
           </div>
 
-          {/* Right col: glass monitor panel */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="glass-chrome"
+          {/* Right col: industry cards grid */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '1rem',
+            }}
           >
-            <div className="glass-chrome-bar">
-              <div className="macos-dots">
-                <span style={{ background: '#ff5f57', width: '10px', height: '10px', borderRadius: '50%', display: 'inline-block' }} />
-                <span style={{ background: '#febc2e', width: '10px', height: '10px', borderRadius: '50%', display: 'inline-block' }} />
-                <span style={{ background: '#28c840', width: '10px', height: '10px', borderRadius: '50%', display: 'inline-block' }} />
-              </div>
-              <span style={{
-                fontFamily: 'var(--font-fira), monospace',
-                fontSize: '0.625rem',
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: 'rgba(232,234,240,0.3)',
-              }}>
-                SF ATM NETWORK PREVIEW
-              </span>
-              <div className="live-badge">
-                <div className="live-dot" />
-                <span>LIVE</span>
-              </div>
-            </div>
-
-            {networkLocations.slice(0, 3).map((loc, i) => (
+            {industries.map((ind, i) => (
               <motion.div
-                key={loc.id}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.4, ease: EASE }}
-                className="flex items-center justify-between px-4 md:px-6"
+                key={ind.name}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: i * 0.06, ease: EASE }}
                 style={{
-                  padding: undefined,
-                  paddingTop: '1.25rem',
-                  paddingBottom: '1.25rem',
-                  borderBottom: i < 2 ? '1px solid rgba(232,234,240,0.04)' : 'none',
-                  gap: '0.75rem',
+                  padding: '1.5rem',
+                  background: 'rgba(15,29,53,0.5)',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  borderRadius: '4px',
+                  transition: 'border-color 0.2s, background 0.2s',
+                  cursor: 'default',
+                }}
+                whileHover={{
+                  borderColor: 'rgba(255,255,255,0.14)',
+                  backgroundColor: 'rgba(15,29,53,0.7)',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
-                  <StatusDot status={loc.status} />
-                  <span className="text-sm truncate" style={{ color: 'var(--text-primary)', fontWeight: 450 }}>
-                    {loc.name}
-                  </span>
+                <div style={{
+                  fontFamily: 'var(--font-fira), monospace',
+                  fontSize: '0.55rem',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(196,30,58,0.6)',
+                  marginBottom: '0.5rem',
+                }}>
+                  {ind.icon}
                 </div>
-                <div className="flex items-center gap-3 md:gap-8 shrink-0">
-                  <span className="hidden sm:inline" style={{
-                    fontFamily: 'var(--font-fira), monospace',
-                    fontSize: '0.6rem',
-                    letterSpacing: '0.08em',
-                    color: 'var(--text-faint)',
-                  }}>
-                    {loc.lastTx}
-                  </span>
-                  <span style={{
-                    fontFamily: 'var(--font-fira), monospace',
-                    fontSize: '0.6rem',
-                    letterSpacing: '0.08em',
-                    color: loc.status === 'online' ? 'rgba(40,200,64,0.7)' : 'rgba(254,188,46,0.7)',
-                    textTransform: 'uppercase',
-                  }}>
-                    {loc.status}
-                  </span>
+                <div style={{
+                  fontSize: '0.9375rem',
+                  fontWeight: 500,
+                  color: 'var(--text-primary)',
+                }}>
+                  {ind.name}
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 

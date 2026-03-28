@@ -1,7 +1,14 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { networkLocations } from '@/lib/data'
+const machines = [
+  { id: 'atm-001', name: 'Restaurant Location', type: 'Dining', status: 'online', lastTx: '2 min ago', txCount: 847, cash: 78 },
+  { id: 'atm-002', name: 'Bar + Lounge', type: 'Nightlife', status: 'online', lastTx: '4 min ago', txCount: 1203, cash: 62 },
+  { id: 'atm-003', name: 'Dispensary', type: 'Retail', status: 'online', lastTx: '1 min ago', txCount: 634, cash: 91 },
+  { id: 'atm-004', name: 'Convenience Store', type: 'Retail', status: 'maintenance', lastTx: '38 min ago', txCount: 428, cash: 15 },
+  { id: 'atm-005', name: 'Event Venue', type: 'Entertainment', status: 'online', lastTx: '7 min ago', txCount: 916, cash: 54 },
+  { id: 'atm-006', name: 'Liquor Store', type: 'Retail', status: 'online', lastTx: '12 min ago', txCount: 502, cash: 83 },
+]
 
 // Animate tx counts — increments slowly to simulate live data
 function LiveCount({ base }: { base: number }) {
@@ -54,7 +61,7 @@ export default function NetworkMonitor() {
             color: 'rgba(232,234,240,0.3)',
           }}
         >
-          SF ATM NETWORK: LIVE MONITOR
+          SF ATM: LIVE MONITOR
         </span>
         <div className="live-badge">
           <div className="live-dot" />
@@ -92,7 +99,7 @@ export default function NetworkMonitor() {
 
         {/* Rows */}
         <div className="px-0">
-          {networkLocations.map((loc, i) => (
+          {machines.map((loc, i) => (
             <motion.div
               key={loc.id}
               className="grid px-4 md:px-6 py-4 group"
@@ -207,7 +214,7 @@ export default function NetworkMonitor() {
 
       {/* Mobile card view — stacked cards instead of table */}
       <div className="network-monitor-cards" style={{ display: 'none', flexDirection: 'column', gap: '1px' }}>
-        {networkLocations.map((loc, i) => (
+        {machines.map((loc, i) => (
           <motion.div
             key={loc.id}
             initial={{ opacity: 0, y: 10 }}

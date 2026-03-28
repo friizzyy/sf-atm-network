@@ -38,7 +38,7 @@ export default function Footer() {
               color: 'var(--text-primary)',
             }}
           >
-            SF ATM Network
+            SF ATM
           </span>
         </div>
 
@@ -73,7 +73,7 @@ export default function Footer() {
             color: 'rgba(232,234,240,0.2)',
           }}
         >
-          &copy; 2025 SF ATM Network &middot; San Francisco, CA &middot; info@sfatmnetwork.com
+          &copy; 2025 SF ATM &middot; San Francisco, CA &middot; hello@sfatm.com
         </span>
       </div>
     </footer>

@@ -56,7 +56,7 @@ const tiers = [
 
 const qualifiers = [
   { label: 'Foot Traffic', detail: '50+ daily visitors minimum' },
-  { label: 'Location Type', detail: 'Retail, dining, entertainment, venues' },
+  { label: 'Location Type', detail: 'Restaurants, bars, dispensaries, retail, venues' },
   { label: 'Power Access', detail: 'Standard 110V outlet within 10 feet' },
   { label: 'Floor Space', detail: '24 x 24 inches minimum footprint' },
   { label: 'Operating Hours', detail: 'At least 8 hours per day open to public' },
