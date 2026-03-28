@@ -107,7 +107,7 @@ const eventTabs = [
       '4G LTE failover, generator-ready',
     ],
     visual: { icon: '⬡', color: '#c41e3a', pattern: 'grid' },
-    description: 'High-volume outdoor events where card readers fail and crowds get long. We deploy multiple units, manage cash replenishment on-site, and keep attendees liquid all day.',
+    description: 'High-volume outdoor events where card readers fail and lines get long. We bring multiple units, manage cash replenishment on-site, and keep attendees covered all day.',
   },
   {
     id: 'corporate',
@@ -133,7 +133,7 @@ const eventTabs = [
       'Nightly transaction summaries',
     ],
     visual: { icon: '◉', color: '#c41e3a', pattern: 'dots' },
-    description: 'Cash-heavy nights at Bay Area clubs and late-night venues. We position units near the door and bar entry for maximum transaction volume.',
+    description: 'Cash-heavy nights in SoMa, Tenderloin, and Mission clubs. We position units near the door and bar entry for maximum transaction volume.',
   },
   {
     id: 'popup',
@@ -146,18 +146,18 @@ const eventTabs = [
       'Recurring series contracts available',
     ],
     visual: { icon: '◇', color: '#28c840', pattern: 'sparse' },
-    description: 'Temporary storefronts, farmers markets, and weekly pop-ups where card infrastructure is not yet set up. We bring the ATM and connectivity. You bring the product.',
+    description: 'Temporary storefronts, farmers markets, and weekly pop-ups. We bring the ATM and connectivity. You bring the product.',
   },
 ]
 
 const features = [
-  { label: 'Portable Fleet', detail: 'Stand-alone units operating anywhere with power access' },
-  { label: 'On-Site Cash Management', detail: 'Armored replenishment during multi-day events' },
-  { label: 'Power and Connectivity', detail: 'Generator hookup or facility power, 4G LTE backup' },
-  { label: 'Optional Event Staff', detail: 'Trained operators for high-volume deployments' },
+  { label: 'Portable ATMs', detail: 'Stand-alone units that work anywhere with power access' },
+  { label: 'On-Site Cash Loading', detail: 'Cash replenishment handled during multi-day events' },
+  { label: 'Power + Connectivity', detail: 'Generator hookup or facility power, 4G LTE backup' },
+  { label: 'Event Staffing', detail: 'Trained operators available for high-volume events' },
   { label: 'Post-Event Report', detail: 'Full transaction summary within 24 hours of close' },
-  { label: 'Rapid Deployment', detail: 'Units on-site within 48 hours of confirmed booking' },
-  { label: 'Permitting Support', detail: 'We handle venue coordination and required permits' },
+  { label: 'Fast Setup', detail: 'Units on-site within 48 hours of confirmed booking' },
+  { label: 'Permitting Help', detail: 'We handle venue coordination and required permits' },
   { label: 'Recurring Contracts', detail: 'Volume pricing for weekly markets and seasonal series' },
 ]
 
@@ -210,7 +210,7 @@ export default function EventsPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: EASE }}
           >
-            <SectionEyebrow label="Event ATM Placement" />
+            <SectionEyebrow label="Event ATM Deployment" />
           </motion.div>
 
           <AnimatedHeadline text="Every event is a cash moment." accent="cash" />
@@ -535,7 +535,7 @@ export default function EventsPage() {
                 marginBottom: 0,
               }}
             >
-              Full setup, zero overhead.
+              Everything included, zero overhead.
             </motion.h2>
           </div>
 
@@ -620,7 +620,7 @@ export default function EventsPage() {
               marginBottom: '4rem',
             }}
           >
-            Three steps to your event ATM.
+            Three steps to your first deployment.
           </motion.h2>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '44rem' }}>

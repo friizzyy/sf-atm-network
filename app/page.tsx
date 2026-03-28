@@ -157,7 +157,7 @@ export default function Home() {
       >
         {/* Thin gradient divider top */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-          <SectionEyebrow label="Live Status" />
+          <SectionEyebrow label="By the Numbers" />
         </div>
         <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 1.5rem' }}>
           <div className="grid grid-cols-2 md:grid-cols-4 justify-items-center gap-y-8">
@@ -229,7 +229,7 @@ export default function Home() {
                 marginBottom: '2rem',
               }}
             >
-              Full-service ATM<br />for your business.
+              Everything your ATM needs.
             </motion.h2>
             <motion.div
               initial={{ opacity: 0 }}
@@ -312,11 +312,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── INDUSTRIES — Pattern C: who we work with ─────────────────────── */}
+      {/* ─── INDUSTRIES WE SERVE — Pattern C: full-bleed editorial ───────── */}
       <section className="py-16 md:py-36" style={{ overflow: 'hidden', position: 'relative' }}>
         {/* Thin gradient divider top */}
         <div className="mb-16 md:mb-36 -mt-16 md:-mt-36" style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)' }} />
 
+        {/* Large bleed number — Pattern C treatment */}
+        <div style={{ overflow: 'hidden', marginBottom: '2rem' }}>
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 1, ease: EASE }}
+            style={{
+              fontFamily: 'var(--font-dm-sans), system-ui, sans-serif',
+              fontSize: 'clamp(3rem, 14vw, 11rem)',
+              fontWeight: 800,
+              letterSpacing: '-0.06em',
+              lineHeight: 0.85,
+              color: 'rgba(196,30,58,0.07)',
+              padding: '0 1.5rem',
+              userSelect: 'none',
+            }}
+          >
+            200+
+          </motion.div>
+        </div>
+
+        {/* Offset: header left + industries grid right */}
         <div
           className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-16"
           style={{
@@ -326,8 +349,8 @@ export default function Home() {
             alignItems: 'start',
           }}
         >
-          {/* Left col: sticky eyebrow + headline + link */}
-          <div style={{ position: 'sticky', top: '6rem' }}>
+          {/* Left col: eyebrow + headline + link */}
+          <div>
             <SectionEyebrow label="Who We Work With" />
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -345,24 +368,9 @@ export default function Home() {
                 marginBottom: '1.5rem',
               }}
             >
-              Built for Bay Area{' '}
-              <span style={{ color: 'var(--accent)' }}>businesses.</span>
+              Built for{' '}
+              <span style={{ color: 'var(--accent)' }}>Bay Area business.</span>
             </motion.h2>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2, ease: EASE }}
-              style={{
-                color: 'var(--text-muted)',
-                fontSize: '0.9375rem',
-                lineHeight: 1.65,
-                marginBottom: '2rem',
-                maxWidth: '22rem',
-              }}
-            >
-              We place and support ATMs across every major Bay Area business category. If your location has foot traffic, we have a solution.
-            </motion.p>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -370,7 +378,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.3, ease: EASE }}
             >
               <Link
-                href="/contact"
+                href="/partners"
                 style={{
                   fontFamily: 'var(--font-fira), monospace',
                   fontSize: '0.625rem',
@@ -384,45 +392,41 @@ export default function Home() {
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
               >
-                Become a partner &rarr;
+                Become a partner →
               </Link>
             </motion.div>
           </div>
 
-          {/* Right col: industry cards grid */}
+          {/* Right col: industries grid */}
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '1rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(200px, 100%), 1fr))',
+              gap: '1px',
+              background: 'var(--border)',
+              border: '1px solid var(--border)',
             }}
           >
             {industries.map((ind, i) => (
               <motion.div
-                key={ind.name}
+                key={ind.id}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.5, delay: i * 0.06, ease: EASE }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
                 style={{
                   padding: '1.5rem',
-                  background: 'rgba(15,29,53,0.5)',
-                  border: '1px solid rgba(255,255,255,0.07)',
-                  borderRadius: '4px',
-                  transition: 'border-color 0.2s, background 0.2s',
-                  cursor: 'default',
+                  background: 'var(--bg)',
+                  transition: 'background 0.2s',
                 }}
-                whileHover={{
-                  borderColor: 'rgba(255,255,255,0.14)',
-                  backgroundColor: 'rgba(15,29,53,0.7)',
-                }}
+                whileHover={{ backgroundColor: '#0f1d35' }}
               >
                 <div style={{
                   fontFamily: 'var(--font-fira), monospace',
                   fontSize: '0.55rem',
-                  letterSpacing: '0.12em',
+                  letterSpacing: '0.15em',
                   textTransform: 'uppercase',
-                  color: 'rgba(196,30,58,0.6)',
+                  color: 'rgba(196,30,58,0.5)',
                   marginBottom: '0.5rem',
                 }}>
                   {ind.icon}
@@ -432,7 +436,7 @@ export default function Home() {
                   fontWeight: 500,
                   color: 'var(--text-primary)',
                 }}>
-                  {ind.name}
+                  {ind.label}
                 </div>
               </motion.div>
             ))}
@@ -534,7 +538,7 @@ export default function Home() {
         />
 
         <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 1.5rem' }}>
-          <SectionEyebrow label="Partner With Us" />
+          <SectionEyebrow label="Get Started" />
 
           <motion.h2
             initial={{ opacity: 0, y: 25 }}

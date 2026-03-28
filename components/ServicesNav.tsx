@@ -99,7 +99,7 @@ function RevenueViz() {
       >YOUR SHARE</motion.text>
       <motion.text x="140" y="8" fill="rgba(30,79,216,0.8)" fontSize="9" fontFamily="Fira Code, monospace"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
-      >NETWORK</motion.text>
+      >SF ATM</motion.text>
 
       {/* Monthly dots */}
       {[45, 70, 95, 120, 145, 170, 195].map((x, i) => (

@@ -329,8 +329,8 @@ export default function PartnersPage() {
 
           <div className="md:ml-[calc(80px+3rem)]" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '44rem' }}>
             {[
-              { step: '01', title: 'Apply in 5 minutes', body: 'Tell us about your location: business type, neighborhood, daily foot traffic estimate. We review and respond within 48 hours.' },
-              { step: '02', title: 'We handle installation', body: 'Our team schedules a site visit, handles all permits, and installs the unit. Total disruption to your business: under two hours.' },
+              { step: '01', title: 'Tell us about your business', body: 'Fill out our quick form with your business type, neighborhood, and rough daily foot traffic. We get back to you within 48 hours.' },
+              { step: '02', title: 'We handle the install', body: 'Our local team comes out, checks the site, handles permits, and installs the ATM. Total disruption to your business: under two hours.' },
               { step: '03', title: 'Collect every month', body: 'Transaction revenue hits your account on the first of each month via direct deposit. No invoices, no chasing, no overhead.' },
             ].map((s, i) => (
               <motion.div

@@ -14,13 +14,12 @@ const container = {
   padding: '0 1.5rem',
 }
 
-type InquiryType = 'partner' | 'event' | 'support' | 'diagnostics' | 'other'
+type InquiryType = 'partner' | 'event' | 'support' | 'other'
 
 const inquiryOptions: { value: InquiryType; label: string }[] = [
   { value: 'partner', label: 'ATM Placement' },
-  { value: 'event', label: 'Event Placement' },
-  { value: 'support', label: 'ATM Support + Service' },
-  { value: 'diagnostics', label: 'Remote Diagnostics Help' },
+  { value: 'event', label: 'Event ATM Booking' },
+  { value: 'support', label: 'ATM Support / Service Request' },
   { value: 'other', label: 'Other Inquiry' },
 ]
 
@@ -121,7 +120,7 @@ export default function ContactPage() {
               maxWidth: '32rem',
             }}
           >
-            Partner applications, event bookings, support requests, and diagnostics inquiries all come through here.
+            ATM placement, event bookings, support requests, and diagnostics help.
             We respond within one business day.
           </motion.p>
         </div>
@@ -285,9 +284,7 @@ export default function ContactPage() {
                           : inquiryType === 'event'
                           ? 'Tell us about your event: format, expected attendance, how many ATMs you need...'
                           : inquiryType === 'support'
-                          ? 'Describe the issue with your ATM: machine ID, error codes, symptoms...'
-                          : inquiryType === 'diagnostics'
-                          ? 'Tell us about your ATM model, the issue you are experiencing, and any error codes displayed...'
+                          ? 'Describe the issue: machine errors, connectivity problems, cash level alerts, or other diagnostics help needed...'
                           : 'Describe your question or issue...'
                       }
                     />
@@ -335,9 +332,9 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <div style={labelStyle}>Partner Inquiries</div>
+                <div style={labelStyle}>Support + Diagnostics</div>
                 <a
-                  href="mailto:partners@sfatm.com"
+                  href="mailto:support@sfatm.com"
                   style={{
                     color: 'var(--text-primary)',
                     fontSize: '0.9375rem',
@@ -347,7 +344,7 @@ export default function ContactPage() {
                   onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
                 >
-                  partners@sfatm.com
+                  support@sfatm.com
                 </a>
               </div>
 
@@ -384,10 +381,9 @@ export default function ContactPage() {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   {[
-                    { label: 'Partner Applications', time: 'Within 48 hours' },
+                    { label: 'ATM Placement Inquiries', time: 'Within 48 hours' },
                     { label: 'Event Bookings', time: 'Within 24 hours' },
-                    { label: 'Technical Support', time: 'Within 4 hours' },
-                    { label: 'Remote Diagnostics', time: 'Same day' },
+                    { label: 'Support + Diagnostics', time: 'Within 4 hours' },
                   ].map((item) => (
                     <div key={item.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                       <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>{item.label}</span>

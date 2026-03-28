@@ -28,11 +28,11 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'SF ATM: Premium ATM Placement + Support in the Bay Area',
-  description: 'Zero upfront cost ATM placement, event ATMs, and live diagnostic support for Bay Area businesses. 200+ machines, 99.7% uptime, 24/7 support.',
-  keywords: 'ATM placement San Francisco, ATM support Bay Area, ATM event placement SF, ATM diagnostics',
+  title: 'SF ATM Network: Premium ATM Placement in San Francisco',
+  description: 'Zero upfront cost ATM placement with revenue sharing across San Francisco neighborhoods. 200+ machines, 99.7% uptime, 24/7 monitoring.',
+  keywords: 'ATM placement San Francisco, ATM revenue sharing SF, ATM network Bay Area',
   openGraph: {
-    title: 'SF ATM',
+    title: 'SF ATM Network',
     description: 'Your revenue, running 24/7.',
     type: 'website',
   },

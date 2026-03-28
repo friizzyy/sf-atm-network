@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Nav from '@/components/Nav'
 import SectionEyebrow from '@/components/SectionEyebrow'
 import ServicesNav from '@/components/ServicesNav'
+import NetworkMonitor from '@/components/NetworkMonitor'
 import MagneticButton from '@/components/MagneticButton'
 import Footer from '@/components/Footer'
 
@@ -46,7 +47,7 @@ export default function ServicesPage() {
           >
             Every service.
             <br />
-            <span style={{ color: 'var(--accent)' }}>Zero upfront.</span>
+            <span style={{ color: 'var(--accent)' }}>Zero upfront cost.</span>
           </h1>
         </motion.div>
 
@@ -71,7 +72,8 @@ export default function ServicesPage() {
               margin: 0,
             }}
           >
-            Full-service ATM placement and support for Bay Area businesses. We handle everything from install to cash management, no upfront cost required.
+            ATM placement, cash management, live monitoring, and hands-on support
+            for Bay Area businesses. We handle it all so you do not have to.
           </p>
         </motion.div>
 
@@ -92,16 +94,35 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ─── SUPPORT + DIAGNOSTICS ──────────────────────────────────────── */}
+      {/* ─── LIVE NETWORK MONITOR — Pattern D: offset grid ──────────────── */}
       <section className="section-pad" style={{ position: 'relative' }}>
         {/* Thin gradient divider top */}
         <div className="mb-16 md:mb-32 -mt-16 md:-mt-32" style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)' }} />
 
         <div style={{ maxWidth: '68rem', margin: '0 auto', padding: '0 1.5rem' }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16" style={{ alignItems: 'start' }}>
-            {/* Left: copy + CTA */}
+          {/* Offset grid: vertical label | content */}
+          <div
+            className="grid grid-cols-1 md:grid-cols-[80px_1fr] gap-4 md:gap-12"
+            style={{
+              alignItems: 'start',
+              marginBottom: '3rem',
+            }}
+          >
+            <div className="offset-grid-label" style={{ paddingTop: '8px', display: 'flex', justifyContent: 'center' }}>
+              <span style={{
+                fontFamily: 'var(--font-fira), monospace',
+                fontSize: '9px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.25em',
+                color: 'var(--text-faint)',
+                writingMode: 'vertical-rl',
+                transform: 'rotate(180deg)',
+              }}>
+                Live Status
+              </span>
+            </div>
             <div>
-              <SectionEyebrow label="ATM Support" />
+              <SectionEyebrow label="ATM Monitoring" />
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -119,87 +140,30 @@ export default function ServicesPage() {
                   marginBottom: '1rem',
                 }}
               >
-                Machine issues?{' '}
-                <span style={{ color: 'var(--accent)' }}>We fix them fast.</span>
+                Every machine,{' '}
+                <span style={{ color: 'var(--accent)' }}>always watched.</span>
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
-                style={{ color: 'var(--text-muted)', maxWidth: '28rem', marginTop: '1rem', lineHeight: 1.65, marginBottom: '2rem' }}
+                style={{ color: 'var(--text-muted)', maxWidth: '28rem', marginTop: '1rem', lineHeight: 1.65 }}
               >
-                Our team resolves most issues remotely through live diagnostics before they affect your customers.
-                When hands-on service is needed, our Bay Area technicians are on-site within hours. We also offer
-                nationwide remote support for ATM operators by request.
+                We track every ATM in real time. Status, last transaction, cash levels,
+                and uptime. Issues get flagged and handled before your customers notice.
               </motion.p>
-              <MagneticButton variant="primary" href="/contact">
-                Request Support
-              </MagneticButton>
             </div>
-
-            {/* Right: glass-chrome capabilities panel */}
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.8, ease: EASE }}
-              className="glass-chrome"
-            >
-              <div className="glass-chrome-bar">
-                <div className="macos-dots">
-                  <span style={{ background: '#ff5f57', width: '10px', height: '10px', borderRadius: '50%', display: 'inline-block' }} />
-                  <span style={{ background: '#febc2e', width: '10px', height: '10px', borderRadius: '50%', display: 'inline-block' }} />
-                  <span style={{ background: '#28c840', width: '10px', height: '10px', borderRadius: '50%', display: 'inline-block' }} />
-                </div>
-                <span style={{
-                  fontFamily: 'var(--font-fira), monospace',
-                  fontSize: '0.625rem',
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(232,234,240,0.3)',
-                }}>
-                  SUPPORT CAPABILITIES
-                </span>
-                <div className="live-badge">
-                  <div className="live-dot" />
-                  <span>ACTIVE</span>
-                </div>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                {[
-                  'Live Remote Diagnostics',
-                  'On-Site Bay Area Service',
-                  'Nationwide Remote Support',
-                  'Preventive Maintenance',
-                  'Software + Firmware Updates',
-                  'Parts + Hardware on Hand',
-                ].map((cap, i) => (
-                  <div
-                    key={cap}
-                    style={{
-                      padding: '1.25rem 1.5rem',
-                      borderBottom: i < 5 ? '1px solid rgba(232,234,240,0.04)' : 'none',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.75rem',
-                    }}
-                  >
-                    <div style={{
-                      width: '6px',
-                      height: '6px',
-                      borderRadius: '50%',
-                      background: '#28c840',
-                      flexShrink: 0,
-                    }} />
-                    <span style={{ fontSize: '0.875rem', color: 'var(--text-primary)', fontWeight: 450 }}>
-                      {cap}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease: EASE }}
+          >
+            <NetworkMonitor />
+          </motion.div>
         </div>
       </section>
 
@@ -216,7 +180,7 @@ export default function ServicesPage() {
           background: 'linear-gradient(90deg, transparent, rgba(196,30,58,0.4), transparent)',
         }} />
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 1.5rem' }}>
-          <SectionEyebrow label="Partner With Us" />
+          <SectionEyebrow label="Get Started" />
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -246,10 +210,10 @@ export default function ServicesPage() {
               lineHeight: 1.65,
             }}
           >
-            No upfront cost. No risk. We handle installation, cash, and ongoing support.
+            No upfront cost. No risk. Installation, cash management, and ongoing support all included.
           </motion.p>
           <MagneticButton variant="primary" href="/contact">
-            Become a Partner
+            Get a Free Consultation
           </MagneticButton>
         </div>
       </section>

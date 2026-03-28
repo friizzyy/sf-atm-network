@@ -2,13 +2,13 @@
 import { useEffect, useRef } from 'react'
 
 // SF neighborhood nodes with relative positions (percent of canvas width/height)
-const ATM_NODES = [
-  { id: 'ATM-01',  xPct: 0.48, yPct: 0.72, label: 'ATM-01'  },
-  { id: 'ATM-02',  xPct: 0.38, yPct: 0.60, label: 'ATM-02'  },
-  { id: 'ATM-03',  xPct: 0.62, yPct: 0.55, label: 'ATM-03'  },
-  { id: 'ATM-04',  xPct: 0.65, yPct: 0.30, label: 'ATM-04'  },
-  { id: 'ATM-05',  xPct: 0.30, yPct: 0.18, label: 'ATM-05'  },
-  { id: 'ATM-06',  xPct: 0.22, yPct: 0.42, label: 'ATM-06'  },
+const SF_NODES = [
+  { id: 'Mission',  xPct: 0.48, yPct: 0.72, label: 'Mission'  },
+  { id: 'Castro',   xPct: 0.38, yPct: 0.60, label: 'Castro'   },
+  { id: 'SoMa',     xPct: 0.62, yPct: 0.55, label: 'SoMa'     },
+  { id: 'FiDi',     xPct: 0.65, yPct: 0.30, label: 'FiDi'     },
+  { id: 'Marina',   xPct: 0.30, yPct: 0.18, label: 'Marina'   },
+  { id: 'NOPA',     xPct: 0.22, yPct: 0.42, label: 'NOPA'     },
 ]
 
 interface Particle {
@@ -55,8 +55,8 @@ export default function HeroCanvas() {
 
     // Build paths between all node pairs
     const paths: [number, number][] = []
-    for (let i = 0; i < ATM_NODES.length; i++) {
-      for (let j = i + 1; j < ATM_NODES.length; j++) {
+    for (let i = 0; i < SF_NODES.length; i++) {
+      for (let j = i + 1; j < SF_NODES.length; j++) {
         paths.push([i, j])
       }
     }
@@ -71,7 +71,7 @@ export default function HeroCanvas() {
       ctx!.scale(dpr, dpr)
 
       // Recalculate node positions
-      nodes = ATM_NODES.map((n) => ({
+      nodes = SF_NODES.map((n) => ({
         x: n.xPct * W,
         y: n.yPct * H,
         id: n.id,

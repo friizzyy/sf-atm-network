@@ -1,4 +1,4 @@
-// SF ATM — Design Tokens
+// SF ATM Network — Design Tokens
 // Project-specific. Do not reuse on other projects.
 
 export const colors = {

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ─── SF ATM Design Tokens ─────────────────────────────────────────────────── */
+/* ─── SF ATM Network Design Tokens ─────────────────────────────────────────── */
 :root {
   --bg: #0a1220;
   --surface: #0f1d35;
