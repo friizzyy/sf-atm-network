@@ -1,4 +1,4 @@
-// SF ATM Network — Content Data
+// SF ATM — Content Data
 // All copy lives here. Never hardcode strings in components.
 
 export const nav = {

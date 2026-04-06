@@ -73,7 +73,7 @@ export default function Footer() {
             color: 'rgba(232,234,240,0.2)',
           }}
         >
-          &copy; 2025 SF ATM &middot; San Francisco, CA &middot; hello@sfatm.com
+          &copy; {new Date().getFullYear()} SF ATM &middot; San Francisco, CA &middot; hello@sfatm.com
         </span>
       </div>
     </footer>

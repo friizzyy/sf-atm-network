@@ -58,7 +58,7 @@ export default function Home() {
                 position: 'relative',
                 zIndex: 10,
                 background: 'linear-gradient(135deg, rgba(10,18,32,0.92) 0%, rgba(10,18,32,0.75) 60%, transparent 100%)',
-                borderRadius: '0 0 40px 0',
+                borderRadius: '0 0 24px 0',
                 padding: '20px 16px 20px 0',
               }}
             >
@@ -171,7 +171,7 @@ export default function Home() {
                 className="border-b md:border-b-0 pb-6 md:pb-0"
                 style={{
                   textAlign: 'center',
-                  borderRight: undefined,
+                  position: 'relative',
                   padding: '0 1rem',
                   width: '100%',
                 }}

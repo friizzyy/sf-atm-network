@@ -291,9 +291,11 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <MagneticButton variant="primary" onClick={() => {}}>
-                      Send Message
-                    </MagneticButton>
+                    <button type="submit" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
+                      <MagneticButton variant="primary">
+                        Send Message
+                      </MagneticButton>
+                    </button>
                   </div>
                 </form>
               )}
